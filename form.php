@@ -7,6 +7,11 @@ $page_flag = 0;
 if (!empty ($_POST['btn_confirm'])) {
 
 	$page_flag = 1;
+
+} elseif (!empty ($_POST['btn_submit'])) {
+
+	$page_flag = 2;
+
 }
 ?>
 
@@ -50,6 +55,10 @@ if (!empty ($_POST['btn_confirm'])) {
 						<input type="hidden" name="your_name" value="<?php echo $_POST['your_name']; ?>">
 						<input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
 					</form>
+
+				<?php elseif ($page_flag === 2): ?>
+
+					<p class="text-center">送信が完了しました。</p>
 
 				<?php else: ?>
 					<form method="post" action="">
