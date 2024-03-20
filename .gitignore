@@ -3,3 +3,4 @@ node_modules/
 
 # ルートのファイルを指定する場合
 /styles.css
+.htaccess
