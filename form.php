@@ -108,13 +108,13 @@ if (!empty ($_POST['btn_confirm'])) {
 					<form method="post" action="">
 						<div class="mb-5">
 							<label for="" class="block mb-2 font-bold text-gray-600">氏名</label>
-							<input type="text" id="" name="your_name" placeholder=""
+							<input type="text" id="" name="your_name" placeholder="" value="<?php if( !empty($_POST['your_name']) ){ echo $_POST['your_name']; } ?>"
 								class="border border-gray-300 shadow p-3 w-full rounded mb-2">
 						</div>
 
 						<div class="mb-5">
 							<label for="" class="block mb-2 font-bold text-gray-600">メールアドレス</label>
-							<input type="text" id="" name="email" placeholder=""
+							<input type="text" id="" name="email" placeholder="" value="<?php if( !empty($_POST['email']) ){ echo $_POST['email']; } ?>"
 								class="border border-gray-300 shadow p-3 w-full rounded mb-2">
 						</div>
 
