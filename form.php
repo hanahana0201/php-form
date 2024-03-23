@@ -63,6 +63,7 @@ if (!empty ($_POST['btn_confirm'])) {
 
 <head>
 	<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 	<title>お問合せフォーム</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
@@ -71,7 +72,7 @@ if (!empty ($_POST['btn_confirm'])) {
 	<div class="min-h-screen flex items-center">
 		<div class="w-full">
 			<h2 class="text-center text-blue-400 font-bold text-2xl mb-10">お問合せフォーム</h2>
-			<div class="p-10 md:w-3/4 mx-auto lg:w-1/2">
+			<div class="p-10 w-full mx-auto lg:w-1/2">
 				<?php if ($page_flag === 1): ?>
 					<form method="post" action="">
 						<div class="mb-5">
