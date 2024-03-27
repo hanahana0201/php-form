@@ -63,7 +63,7 @@ if (!empty ($_POST['btn_confirm'])) {
 
 <head>
 	<meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 	<title>お問合せフォーム</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
@@ -118,6 +118,40 @@ if (!empty ($_POST['btn_confirm'])) {
 								class="border border-gray-300 shadow p-3 w-full rounded mb-2">
 						</div>
 
+						<div class="mb-5">
+							<label for="" class="block mb-2 font-bold text-gray-600">性別</label>
+							<div class="flex flex-wrap">
+								<div class="flex items-center me-4">
+									<input id="gender_male" type="radio" name="gender" value="male" class="w-4 h-4 text-blue-500 border-gray-300 focus:ring-blue-400">
+									<label for="gender_male" class="ms-2 text-sm font-medium text-gray-900">男性</label>
+								</div>
+								<div class="flex items-center me-4">
+									<input id="gender_female" type="radio" name="gender" value="male" class="w-4 h-4 text-blue-500 border-gray-300 focus:ring-blue-400">
+									<label for="gender_female" class="ms-2 text-sm font-medium text-gray-900">女性</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="mb-5">
+							<label for="" class="block mb-2 font-bold text-gray-600">年齢</label>
+							<select id="countries" class="border border-gray-300 shadow text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    							<option selected>選択してください</option>
+    							<option value="1">〜19歳</option>
+    							<option value="2">20歳〜29歳</option>
+    							<option value="3">30歳〜39歳</option>
+    							<option value="4">40歳〜49歳</option>
+								<option value="5">50歳〜59歳</option>
+								<option value="6">60歳〜</option>
+  							</select>
+						</div>
+						<div class="mb-5">
+							<label for="" class="block mb-2 font-bold text-gray-600">メールアドレス</label>
+							<textarea class="border border-gray-300 shadow p-3 w-full rounded mb-2" name="contact"></textarea>				
+						</div>
+						<div class="mb-5">
+							<input id="agreement" type="checkbox" name="agreement" value="1" class="w-4 h-4 text-blue-500 border-gray-300 rounded focus:ring-blue-400">
+							<label for="agreement" class="ms-2 text-sm font-medium text-gray-900">プライバシーポリシーに同意する</label>	
+						</div>
 						<input type="submit" name="btn_confirm" value="入力内容を確認する"
 							class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">
 					</form>
