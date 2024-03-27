@@ -38,7 +38,29 @@ if (!empty ($_POST['btn_confirm'])) {
 	$auto_reply_text .= "下記の内容でお問い合わせを受け付けました。\n\n";
 	$auto_reply_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
 	$auto_reply_text .= "氏名：" . $_POST['your_name'] . "\n";
-	$auto_reply_text .= "メールアドレス：" . $_POST['email'] . "\n\n";
+	$auto_reply_text .= "メールアドレス：" . $_POST['email'] . "\n";
+
+	if( $_POST['gender'] === "male" ) {
+		$auto_reply_text .= "性別：男性\n";
+	} else {
+		$auto_reply_text .= "性別：女性\n";
+	}
+
+	if( $_POST['age'] === "1" ){
+		$auto_reply_text .= "年齢：〜19歳\n";
+	} elseif ( $_POST['age'] === "2" ){
+		$auto_reply_text .= "年齢：20歳〜29歳\n";
+	} elseif ( $_POST['age'] === "3" ){
+		$auto_reply_text .= "年齢：30歳〜39歳\n";
+	} elseif ( $_POST['age'] === "4" ){
+		$auto_reply_text .= "年齢：40歳〜49歳\n";
+	} elseif( $_POST['age'] === "5" ){
+		$auto_reply_text .= "年齢：50歳〜59歳\n";
+	} elseif( $_POST['age'] === "6" ){
+		$auto_reply_text .= "年齢：60歳〜\n";
+	}
+
+	$auto_reply_text .= "お問い合わせ内容：" . nl2br($_POST['contact']) . "\n\n";
 	$auto_reply_text .= "センチメートル";
 
 	// メール送信
@@ -50,7 +72,29 @@ if (!empty ($_POST['btn_confirm'])) {
 	$admin_reply_text = "下記の内容でお問い合わせがありました。\n\n";
 	$admin_reply_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
 	$admin_reply_text .= "氏名：" . $_POST['your_name'] . "\n";
-	$admin_reply_text .= "メールアドレス：" . $_POST['email'] . "\n\n";
+	$admin_reply_text .= "メールアドレス：" . $_POST['email'] . "\n";
+
+	if( $_POST['gender'] === "male" ) {
+		$admin_reply_text .= "性別：男性\n";
+	} else {
+		$admin_reply_text .= "性別：女性\n";
+	}
+
+	if( $_POST['age'] === "1" ){
+		$admin_reply_text .= "年齢：〜19歳\n";
+	} elseif ( $_POST['age'] === "2" ){
+		$admin_reply_text .= "年齢：20歳〜29歳\n";
+	} elseif ( $_POST['age'] === "3" ){
+		$admin_reply_text .= "年齢：30歳〜39歳\n";
+	} elseif ( $_POST['age'] === "4" ){
+		$admin_reply_text .= "年齢：40歳〜49歳\n";
+	} elseif( $_POST['age'] === "5" ){
+		$admin_reply_text.= "年齢：50歳〜59歳\n";
+	} elseif( $_POST['age'] === "6" ){
+		$admin_reply_text.= "年齢：60歳〜\n";
+	}
+
+	$admin_reply_text .= "お問い合わせ内容：" . nl2br($_POST['contact']) . "\n\n";
 
 	// 運営側へメール送信
 	mb_send_mail( 'masatoshi_hanai@centi-meter.net', $admin_reply_subject, $admin_reply_text, $header);
@@ -88,6 +132,47 @@ if (!empty ($_POST['btn_confirm'])) {
 								<?php echo $_POST['email']; ?>
 							</p>
 						</div>
+						<div class="mb-5">
+							<label for="" class="block mb-2 font-bold text-gray-600">性別</label>
+							<p class="py-3 w-full mb-2">
+								<?php
+									if( $_POST['gender'] === "male" ){
+										echo '男性'; 
+									}else{
+										echo '女性';
+									} 
+								?>
+							 </p>
+						</div>
+						<div class="mb-5">
+							<label for="" class="block mb-2 font-bold text-gray-600">年齢</label>
+							<p class="py-3 w-full mb-2">
+								<?php
+									if( $_POST['age'] === "1" ){
+										echo '〜19歳';
+									} elseif( $_POST['age'] === "2" ){
+										echo '20歳〜29歳';
+									} elseif( $_POST['age'] === "3" ){
+										echo '30歳〜39歳';
+									} elseif( $_POST['age'] === "4" ){
+										echo '40歳〜49歳';
+									} elseif( $_POST['age'] === "5" ){
+										echo '50歳〜59歳';
+									} elseif( $_POST['age'] === "6" ){
+										echo '60歳〜';
+									}
+								?>
+							</p>
+						</div>
+						<div class="mb-5">
+							<label for="" class="block mb-2 font-bold text-gray-600">お問い合わせ内容</label>
+							<p class="py-3 w-full mb-2"><?php echo nl2br($_POST['contact']); ?></p>
+						</div>
+						<div class="mb-5">
+							<label for="" class="block mb-2 font-bold text-gray-600">プライバシーポリシーに同意する</label>
+							<p class="py-3 w-full mb-2"><?php if( $_POST['agreement'] === "1" ){ echo '同意する'; }
+							else{ echo '同意しない'; } ?></p>
+						</div>
 						<div class="flex">
 							<div class="w-6/12 pr-3"><input type="submit" name="btn_back" value="戻る"
 									class="block w-full bg-gray-500 text-white font-bold p-4 rounded-lg"></div>
@@ -98,6 +183,10 @@ if (!empty ($_POST['btn_confirm'])) {
 						</div>
 						<input type="hidden" name="your_name" value="<?php echo $_POST['your_name']; ?>">
 						<input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
+						<input type="hidden" name="gender" value="<?php echo $_POST['gender']; ?>">
+						<input type="hidden" name="age" value="<?php echo $_POST['age']; ?>">
+						<input type="hidden" name="contact" value="<?php echo $_POST['contact']; ?>">
+						<input type="hidden" name="agreement" value="<?php echo $_POST['agreement']; ?>">
 					</form>
 
 				<?php elseif ($page_flag === 2): ?>
